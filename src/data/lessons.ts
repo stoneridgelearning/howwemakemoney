@@ -596,22 +596,6 @@ export const lessons: Lesson[] = [
         }
       ]
     },
-    quiz: [
-      {
-        id: "q8-1",
-        question: "Which statement best describes the relationship between Stoneridge Software and Levridge?",
-        options: [
-          "They compete for the same customers",
-          "Stoneridge is consulting, Levridge is product — both connected within the Microsoft ecosystem",
-          "Levridge is a department within Stoneridge Software",
-          "They operate in completely different industries"
-        ],
-        correctIndex: 1,
-        feedback: {
-          correct: "Perfect! You've got it. Stoneridge Software is a consulting company while Levridge is a product company — both connected and working within the Microsoft ecosystem.",
-          incorrect: "The best way to think about it: Stoneridge Software is the consulting arm (billable expertise) while Levridge is the product arm (subscription software) — both connected within the Microsoft ecosystem."
-        }
-      }
-    ]
+    quiz: []
   }
 ];
