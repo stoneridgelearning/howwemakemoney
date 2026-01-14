@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { 
   Handshake, Target, Building2, Users, Key, Settings, 
   Clock, RefreshCw, Home, Utensils, TrendingUp, Rocket, 
-  Globe, Leaf, Volume2 
+  Globe, Leaf, Volume2, ChevronDown, Headphones 
 } from 'lucide-react';
 import { Lesson, ContentSection, AccordionItem } from '@/data/lessons';
 import lesson1Audio from '@/assets/lesson1-audio.mp3';
@@ -235,40 +235,71 @@ export function LessonContent({ lesson }: LessonContentProps) {
         return (
           <motion.div
             key={index}
-            className="content-block"
+            className="relative overflow-hidden rounded-2xl mb-6"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.1 }}
           >
-            <div className="flex items-center gap-3 mb-4">
-              <div className="icon-circle">
-                <Volume2 className="w-5 h-5 text-primary-foreground" />
-              </div>
-              <h3 className="font-display text-lg font-semibold text-foreground">
-                Listen to This Section
-              </h3>
+            {/* Gradient Background */}
+            <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary/90 to-icon opacity-95" />
+            
+            {/* Decorative Elements */}
+            <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2" />
+            <div className="absolute bottom-0 left-0 w-24 h-24 bg-white/5 rounded-full translate-y-1/2 -translate-x-1/2" />
+            
+            {/* Waveform Decoration */}
+            <div className="absolute bottom-4 right-4 flex items-end gap-1 opacity-20">
+              {[40, 60, 35, 80, 50, 70, 45, 55, 75, 40, 65, 50].map((h, i) => (
+                <div 
+                  key={i} 
+                  className="w-1 bg-white rounded-full"
+                  style={{ height: `${h}px` }}
+                />
+              ))}
             </div>
-            <audio 
-              controls 
-              className="w-full mb-4 rounded-lg"
-              src={lesson1Audio}
-            >
-              Your browser does not support the audio element.
-            </audio>
-            {section.transcript && (
-              <Collapsible>
-                <CollapsibleTrigger className="flex items-center gap-2 text-sm font-medium text-primary hover:text-primary/80 transition-colors">
-                  <span>View Transcript</span>
-                </CollapsibleTrigger>
-                <CollapsibleContent>
-                  <div className="bg-muted/50 rounded-lg p-4 border border-border mt-3">
-                    <p className="text-foreground leading-relaxed whitespace-pre-line">
-                      {section.transcript}
-                    </p>
-                  </div>
-                </CollapsibleContent>
-              </Collapsible>
-            )}
+            
+            <div className="relative z-10 p-6 md:p-8">
+              {/* Header */}
+              <div className="flex items-center gap-4 mb-6">
+                <div className="w-14 h-14 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
+                  <Headphones className="w-7 h-7 text-white" />
+                </div>
+                <div>
+                  <h3 className="font-display text-xl font-bold text-white">
+                    Listen & Learn
+                  </h3>
+                  <p className="text-white/70 text-sm">Audio introduction to this section</p>
+                </div>
+              </div>
+              
+              {/* Audio Player Container */}
+              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 mb-4">
+                <audio 
+                  controls 
+                  className="w-full [&::-webkit-media-controls-panel]:bg-transparent"
+                  src={lesson1Audio}
+                >
+                  Your browser does not support the audio element.
+                </audio>
+              </div>
+              
+              {/* Transcript Toggle */}
+              {section.transcript && (
+                <Collapsible>
+                  <CollapsibleTrigger className="flex items-center gap-2 text-white/90 hover:text-white transition-colors group">
+                    <ChevronDown className="w-4 h-4 transition-transform group-data-[state=open]:rotate-180" />
+                    <span className="text-sm font-medium">View Transcript</span>
+                  </CollapsibleTrigger>
+                  <CollapsibleContent>
+                    <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 mt-3 border border-white/10">
+                      <p className="text-white/90 leading-relaxed whitespace-pre-line text-sm">
+                        {section.transcript}
+                      </p>
+                    </div>
+                  </CollapsibleContent>
+                </Collapsible>
+              )}
+            </div>
           </motion.div>
         );
 
