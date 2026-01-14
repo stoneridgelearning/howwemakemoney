@@ -202,6 +202,12 @@ export const lessons: Lesson[] = [
           content: "Understanding how we generate revenue helps everyone appreciate the business model and make better decisions. Let's explore Stoneridge Software's main revenue streams."
         },
         {
+          type: 'audio',
+          title: "Primary Revenue Streams",
+          audioSrc: "/audio/lesson-3-primary-revenue-streams.mp3",
+          transcript: "The majority of Stoneridge's revenue comes from consulting services. Clients pay us for the time and expertise of our consultants through either time-and-materials or subscription-based arrangements.\n\nThis includes: Software implementations, ongoing system support, and project work delivered by Stoneridge consultants or subcontractors."
+        },
+        {
           type: 'accordion',
           title: "Revenue Streams",
           items: [
