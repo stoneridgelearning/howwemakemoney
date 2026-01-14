@@ -101,12 +101,11 @@ export default {
   				border: 'hsl(var(--sidebar-border))',
   				ring: 'hsl(var(--sidebar-ring))'
   			},
-			lesson: {
-				complete: 'hsl(var(--lesson-complete))',
-				current: 'hsl(var(--lesson-current))',
-				locked: 'hsl(var(--lesson-locked))',
-				icon: 'hsl(var(--lesson-icon))'
-			}
+  			lesson: {
+  				complete: 'hsl(var(--lesson-complete))',
+  				current: 'hsl(var(--lesson-current))',
+  				locked: 'hsl(var(--lesson-locked))'
+  			}
   		},
   		borderRadius: {
   			lg: 'var(--radius)',
