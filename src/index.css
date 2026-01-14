@@ -1,43 +1,43 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* eLearning Design System - Corporate Learning Platform */
+/* Stoneridge Software Brand Design System */
 
 @layer base {
   :root {
-    /* Core Colors - Professional Blue Theme */
-    --background: 210 20% 98%;
-    --foreground: 222 47% 11%;
+    /* Core Colors - Stoneridge Brand */
+    --background: 210 25% 97%;
+    --foreground: 216 35% 15%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222 47% 11%;
+    --card-foreground: 216 35% 15%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222 47% 11%;
+    --popover-foreground: 216 35% 15%;
 
-    /* Primary - Deep Corporate Blue */
-    --primary: 217 91% 30%;
+    /* Primary - Stoneridge Navy Blue (#004990) */
+    --primary: 209 100% 28%;
     --primary-foreground: 0 0% 100%;
 
     /* Secondary - Light Blue Surface */
-    --secondary: 210 40% 96%;
-    --secondary-foreground: 222 47% 11%;
+    --secondary: 209 40% 95%;
+    --secondary-foreground: 216 35% 15%;
 
     /* Muted - Subtle Gray */
-    --muted: 210 20% 94%;
+    --muted: 210 20% 93%;
     --muted-foreground: 215 16% 47%;
 
-    /* Accent - Teal/Cyan */
-    --accent: 186 76% 40%;
+    /* Accent - Stoneridge Green (#6EB43F) */
+    --accent: 99 49% 48%;
     --accent-foreground: 0 0% 100%;
 
-    /* Success - Green */
-    --success: 142 71% 45%;
+    /* Success - Green (same as accent for brand consistency) */
+    --success: 99 49% 48%;
     --success-foreground: 0 0% 100%;
-    --success-light: 142 71% 95%;
+    --success-light: 99 49% 95%;
 
     /* Warning - Amber */
     --warning: 38 92% 50%;
@@ -48,70 +48,70 @@
     --destructive-foreground: 0 0% 100%;
 
     /* UI Elements */
-    --border: 214 32% 91%;
-    --input: 214 32% 91%;
-    --ring: 217 91% 30%;
+    --border: 214 32% 88%;
+    --input: 214 32% 88%;
+    --ring: 209 100% 28%;
 
-    --radius: 0.75rem;
+    --radius: 0.5rem;
 
     /* Lesson Progress Colors */
-    --lesson-complete: 142 71% 45%;
-    --lesson-current: 217 91% 30%;
+    --lesson-complete: 99 49% 48%;
+    --lesson-current: 209 100% 28%;
     --lesson-locked: 215 16% 75%;
 
-    /* Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(217 91% 30%), hsl(217 91% 45%));
-    --gradient-hero: linear-gradient(135deg, hsl(217 91% 25%), hsl(186 76% 35%));
-    --gradient-card: linear-gradient(180deg, hsl(0 0% 100%), hsl(210 20% 98%));
-    --gradient-accent: linear-gradient(135deg, hsl(186 76% 40%), hsl(186 76% 55%));
+    /* Gradients - Stoneridge Brand */
+    --gradient-primary: linear-gradient(135deg, hsl(209 100% 28%), hsl(209 100% 38%));
+    --gradient-hero: linear-gradient(135deg, hsl(209 100% 25%), hsl(209 100% 35%));
+    --gradient-card: linear-gradient(180deg, hsl(0 0% 100%), hsl(210 25% 97%));
+    --gradient-accent: linear-gradient(135deg, hsl(99 49% 45%), hsl(99 49% 55%));
 
     /* Shadows */
-    --shadow-sm: 0 1px 2px 0 hsl(222 47% 11% / 0.05);
-    --shadow-md: 0 4px 6px -1px hsl(222 47% 11% / 0.1), 0 2px 4px -2px hsl(222 47% 11% / 0.1);
-    --shadow-lg: 0 10px 15px -3px hsl(222 47% 11% / 0.1), 0 4px 6px -4px hsl(222 47% 11% / 0.1);
-    --shadow-xl: 0 20px 25px -5px hsl(222 47% 11% / 0.1), 0 8px 10px -6px hsl(222 47% 11% / 0.1);
-    --shadow-card: 0 1px 3px 0 hsl(222 47% 11% / 0.08), 0 1px 2px -1px hsl(222 47% 11% / 0.08);
-    --shadow-card-hover: 0 10px 20px -5px hsl(222 47% 11% / 0.15);
+    --shadow-sm: 0 1px 2px 0 hsl(216 35% 15% / 0.05);
+    --shadow-md: 0 4px 6px -1px hsl(216 35% 15% / 0.08), 0 2px 4px -2px hsl(216 35% 15% / 0.08);
+    --shadow-lg: 0 10px 15px -3px hsl(216 35% 15% / 0.1), 0 4px 6px -4px hsl(216 35% 15% / 0.1);
+    --shadow-xl: 0 20px 25px -5px hsl(216 35% 15% / 0.1), 0 8px 10px -6px hsl(216 35% 15% / 0.1);
+    --shadow-card: 0 1px 3px 0 hsl(216 35% 15% / 0.06), 0 1px 2px -1px hsl(216 35% 15% / 0.06);
+    --shadow-card-hover: 0 10px 20px -5px hsl(216 35% 15% / 0.12);
 
     /* Sidebar */
-    --sidebar-background: 0 0% 100%;
-    --sidebar-foreground: 222 47% 11%;
-    --sidebar-primary: 217 91% 30%;
+    --sidebar-background: 209 100% 28%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 99 49% 48%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 210 40% 96%;
-    --sidebar-accent-foreground: 222 47% 11%;
-    --sidebar-border: 214 32% 91%;
-    --sidebar-ring: 217 91% 30%;
+    --sidebar-accent: 209 100% 35%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 209 100% 35%;
+    --sidebar-ring: 99 49% 48%;
   }
 
   .dark {
-    --background: 222 47% 8%;
+    --background: 216 35% 8%;
     --foreground: 210 40% 98%;
-    --card: 222 47% 11%;
+    --card: 216 35% 11%;
     --card-foreground: 210 40% 98%;
-    --popover: 222 47% 11%;
+    --popover: 216 35% 11%;
     --popover-foreground: 210 40% 98%;
-    --primary: 217 91% 55%;
+    --primary: 209 100% 45%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 217 32% 17%;
+    --secondary: 209 32% 17%;
     --secondary-foreground: 210 40% 98%;
-    --muted: 217 32% 17%;
+    --muted: 209 32% 17%;
     --muted-foreground: 215 20% 65%;
-    --accent: 186 76% 50%;
+    --accent: 99 49% 55%;
     --accent-foreground: 0 0% 100%;
     --destructive: 0 63% 31%;
     --destructive-foreground: 210 40% 98%;
-    --border: 217 32% 17%;
-    --input: 217 32% 17%;
-    --ring: 217 91% 55%;
-    --sidebar-background: 222 47% 8%;
+    --border: 209 32% 17%;
+    --input: 209 32% 17%;
+    --ring: 209 100% 45%;
+    --sidebar-background: 216 35% 8%;
     --sidebar-foreground: 210 40% 98%;
-    --sidebar-primary: 217 91% 55%;
+    --sidebar-primary: 99 49% 55%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 217 32% 17%;
+    --sidebar-accent: 209 32% 17%;
     --sidebar-accent-foreground: 210 40% 98%;
-    --sidebar-border: 217 32% 17%;
-    --sidebar-ring: 217 91% 55%;
+    --sidebar-border: 209 32% 17%;
+    --sidebar-ring: 99 49% 55%;
   }
 }
 
@@ -126,11 +126,11 @@
 
   body {
     @apply bg-background text-foreground font-sans antialiased;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Open Sans', sans-serif;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     @apply font-bold tracking-tight;
   }
 }
