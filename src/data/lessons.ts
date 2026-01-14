@@ -138,8 +138,12 @@ export const lessons: Lesson[] = [
               content: "From production planning to compliance tracking, we help food and beverage companies streamline their operations."
             },
             {
-              title: "Specialty & Industrial Manufacturing",
-              content: "We serve manufacturers with complex supply chains, helping them optimize production and distribution."
+              title: "Specialty Construction",
+              content: "We serve specialty construction companies with solutions for project management, job costing, and field operations."
+            },
+            {
+              title: "Industrial Manufacturing",
+              content: "We help manufacturers with complex supply chains optimize production and distribution."
             }
           ]
         },
