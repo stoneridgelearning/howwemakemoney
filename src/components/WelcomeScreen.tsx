@@ -4,6 +4,7 @@ import {
   TrendingUp, ArrowRight 
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import stoneridgeLogo from '@/assets/stoneridge-logo.png';
 
 interface WelcomeScreenProps {
   onStart: () => void;
@@ -16,23 +17,32 @@ export function WelcomeScreen({ onStart, progress }: WelcomeScreenProps) {
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      <section className="relative overflow-hidden">
+      <section className="relative overflow-hidden bg-primary">
         <div 
-          className="absolute inset-0 opacity-5"
+          className="absolute inset-0 opacity-10"
           style={{
-            backgroundImage: `radial-gradient(circle at 25% 25%, hsl(var(--primary)) 0%, transparent 50%), radial-gradient(circle at 75% 75%, hsl(var(--accent)) 0%, transparent 50%)`
+            backgroundImage: `radial-gradient(circle at 25% 25%, hsl(var(--accent)) 0%, transparent 50%), radial-gradient(circle at 75% 75%, hsl(var(--primary-foreground)) 0%, transparent 30%)`
           }}
         />
         
-        <div className="container mx-auto px-4 py-16 md:py-24">
+        <div className="container mx-auto px-4 py-12 md:py-20">
           <motion.div
             className="max-w-3xl mx-auto text-center"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
+            <motion.img 
+              src={stoneridgeLogo} 
+              alt="Stoneridge Software" 
+              className="h-12 md:h-16 w-auto mx-auto mb-8"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.1 }}
+            />
+
             <motion.div
-              className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full mb-6"
+              className="inline-flex items-center gap-2 bg-primary-foreground/10 text-primary-foreground px-4 py-2 rounded-full mb-6 border border-primary-foreground/20"
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.2 }}
@@ -41,12 +51,11 @@ export function WelcomeScreen({ onStart, progress }: WelcomeScreenProps) {
               <span className="text-sm font-semibold">Internal Training Module</span>
             </motion.div>
 
-            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
-              How We{' '}
-              <span className="text-gradient">Make Money</span>
+            <h1 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-primary-foreground mb-6">
+              How We Make Money
             </h1>
 
-            <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
+            <p className="text-base md:text-lg text-primary-foreground/80 mb-8 max-w-2xl mx-auto">
               Understand the business models behind Stoneridge Software and Levridge. 
               This course will help you see how your work contributes to our success.
             </p>
@@ -60,14 +69,14 @@ export function WelcomeScreen({ onStart, progress }: WelcomeScreenProps) {
               <Button
                 size="lg"
                 onClick={onStart}
-                className="bg-primary hover:bg-primary/90 text-lg px-8"
+                className="bg-accent hover:bg-accent/90 text-accent-foreground text-lg px-8 font-semibold"
               >
                 {hasProgress ? 'Continue Learning' : 'Start Course'}
                 <ArrowRight className="w-5 h-5 ml-2" />
               </Button>
 
               {hasProgress && (
-                <p className="text-sm text-muted-foreground">
+                <p className="text-sm text-primary-foreground/70">
                   You're {progress}% complete
                 </p>
               )}
