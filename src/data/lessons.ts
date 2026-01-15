@@ -69,7 +69,7 @@ export const lessons: Lesson[] = [
           items: [
             {
               title: "Stoneridge Software",
-              content: "A consulting and technology services company focused on Microsoft Dynamics 365 and Microsoft 365 implementations."
+              content: "A consulting and technology services company focused on Microsoft Dynamics 365, Microsoft 365 implementations, and Support."
             },
             {
               title: "Levridge",
