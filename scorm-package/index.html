@@ -546,10 +546,10 @@
         // =====================================================================
         
         var state = {
-            currentLesson: 1,        // Current lesson being viewed
+            currentLesson: 0,        // 0 = welcome screen, 1-7 = lessons
             lessonsCompleted: [],    // Array of completed lesson IDs
             quizScores: {},          // Object mapping lesson ID to score
-            viewState: 'content',    // 'content', 'quiz', or 'complete'
+            viewState: 'welcome',    // 'welcome', 'content', 'quiz', or 'complete'
             currentQuizIndex: 0,     // Current question in quiz
             quizAnswers: [],         // User's answers for current quiz
             totalScore: 0            // Overall course score
@@ -581,8 +581,12 @@
             // Render the sidebar
             renderSidebar();
             
-            // Render the current lesson
-            renderLesson(state.currentLesson);
+            // Check if user has progress - show welcome or resume
+            if (state.currentLesson === 0 || state.viewState === 'welcome') {
+                renderWelcomeScreen();
+            } else {
+                renderLesson(state.currentLesson);
+            }
             
             // Update progress display
             updateProgress();
@@ -635,6 +639,114 @@
         // =====================================================================
         // UI Rendering
         // =====================================================================
+
+        /**
+         * Render the welcome/home screen.
+         */
+        function renderWelcomeScreen() {
+            state.viewState = 'welcome';
+            state.currentLesson = 0;
+            
+            var progress = calculateProgress();
+            var hasProgress = progress > 0;
+            var buttonText = hasProgress ? 'Continue Learning' : 'Start Course';
+            var progressNote = hasProgress ? '<p class="welcome-progress">You\'re ' + progress + '% complete</p>' : '';
+            
+            var html = '<div class="welcome-screen">' +
+                '<div class="welcome-hero">' +
+                    '<img src="assets/stoneridge-logo.png" alt="Stoneridge Software" class="welcome-logo" onerror="this.style.display=\'none\'">' +
+                    '<div class="welcome-badge">' +
+                        getIcon('trophy') +
+                        '<span>Internal Training Module</span>' +
+                    '</div>' +
+                    '<h1 class="welcome-title">How We Make Money</h1>' +
+                    '<p class="welcome-subtitle">Understand the business models behind Stoneridge Software and Levridge. This course will help you see how your work contributes to our success.</p>' +
+                    '<button class="btn btn-accent btn-lg" id="btn-start-course">' + buttonText + ' ' + getIcon('chevron-down').replace('m6 9 6 6 6-6', 'M5 12h14M12 5l7 7-7 7') + '</button>' +
+                    progressNote +
+                '</div>' +
+                
+                '<div class="welcome-section">' +
+                    '<h2 class="welcome-section-title">What You\'ll Learn</h2>' +
+                    '<p class="welcome-section-desc">By the end of this module, you\'ll have a clear understanding of how both companies generate revenue and what drives our costs.</p>' +
+                    '<div class="welcome-cards">' +
+                        '<div class="welcome-card">' +
+                            '<div class="welcome-card-icon">' + getIcon('building') + '</div>' +
+                            '<h3>Two Companies</h3>' +
+                            '<p>Understand the difference between Stoneridge Software and Levridge</p>' +
+                        '</div>' +
+                        '<div class="welcome-card">' +
+                            '<div class="welcome-card-icon">' + getIcon('trending-up') + '</div>' +
+                            '<h3>Revenue Streams</h3>' +
+                            '<p>Identify primary revenue sources for each company</p>' +
+                        '</div>' +
+                        '<div class="welcome-card">' +
+                            '<div class="welcome-card-icon">' + getIcon('target') + '</div>' +
+                            '<h3>Cost Drivers</h3>' +
+                            '<p>Recognize major costs for consulting vs. SaaS</p>' +
+                        '</div>' +
+                        '<div class="welcome-card">' +
+                            '<div class="welcome-card-icon">' + getIcon('leaf') + '</div>' +
+                            '<h3>Strategic Fit</h3>' +
+                            '<p>See how Levridge fits into the Microsoft ecosystem</p>' +
+                        '</div>' +
+                    '</div>' +
+                '</div>' +
+                
+                '<div class="welcome-details">' +
+                    '<div class="welcome-detail-cards">' +
+                        '<div class="welcome-detail">' +
+                            '<div class="welcome-detail-icon">' + getIcon('target') + '</div>' +
+                            '<div><strong>7 Lessons</strong><br><span>Bite-sized learning</span></div>' +
+                        '</div>' +
+                        '<div class="welcome-detail">' +
+                            '<div class="welcome-detail-icon">' + getIcon('clock') + '</div>' +
+                            '<div><strong>~30 Minutes</strong><br><span>Self-paced</span></div>' +
+                        '</div>' +
+                        '<div class="welcome-detail">' +
+                            '<div class="welcome-detail-icon">' + getIcon('check') + '</div>' +
+                            '<div><strong>Interactive</strong><br><span>Knowledge checks</span></div>' +
+                        '</div>' +
+                    '</div>' +
+                    '<p class="welcome-note">Designed for all team members across Sales, Delivery, and Corporate. No finance background required.</p>' +
+                    '<button class="btn btn-primary btn-lg" id="btn-begin-course">' + (hasProgress ? 'Continue Where You Left Off' : 'Begin Course') + '</button>' +
+                '</div>' +
+            '</div>';
+            
+            elements.contentArea.innerHTML = html;
+            
+            // Add click handlers
+            var startBtn = document.getElementById('btn-start-course');
+            var beginBtn = document.getElementById('btn-begin-course');
+            
+            function startCourse() {
+                if (state.lessonsCompleted.length > 0) {
+                    // Resume from last lesson or next incomplete
+                    var nextLesson = 1;
+                    for (var i = 1; i <= lessons.length; i++) {
+                        if (state.lessonsCompleted.indexOf(i) === -1) {
+                            nextLesson = i;
+                            break;
+                        }
+                    }
+                    navigateToLesson(nextLesson);
+                } else {
+                    navigateToLesson(1);
+                }
+            }
+            
+            if (startBtn) startBtn.addEventListener('click', startCourse);
+            if (beginBtn) beginBtn.addEventListener('click', startCourse);
+            
+            // Update sidebar to show no active lesson
+            renderSidebar();
+        }
+
+        /**
+         * Calculate overall course progress percentage.
+         */
+        function calculateProgress() {
+            return Math.round((state.lessonsCompleted.length / lessons.length) * 100);
+        }
         
         /**
          * Render the sidebar lesson list.
