@@ -71,10 +71,8 @@ export function useCourseProgress() {
     localStorage.removeItem(STORAGE_KEY);
   };
 
-  const isLessonAccessible = (lessonId: number): boolean => {
-    if (lessonId === 1) return true;
-    const previousLesson = progress.lessons.find((l) => l.lessonId === lessonId - 1);
-    return previousLesson?.completed ?? false;
+  const isLessonAccessible = (_lessonId: number): boolean => {
+    return true;
   };
 
   return {

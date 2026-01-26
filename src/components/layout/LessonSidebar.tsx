@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Check, Lock, ChevronRight, Clock } from 'lucide-react';
+import { Check, ChevronRight, Clock } from 'lucide-react';
 import { lessons } from '@/data/lessons';
 import { CourseProgress } from '@/hooks/useCourseProgress';
 import { cn } from '@/lib/utils';
@@ -56,14 +56,11 @@ export function LessonSidebar({
                   "w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 text-sm font-semibold",
                   isCompleted && "bg-success text-success-foreground",
                   isCurrent && !isCompleted && "bg-primary text-primary-foreground",
-                  !isCompleted && !isCurrent && isAccessible && "bg-secondary text-secondary-foreground",
-                  !isAccessible && "bg-muted text-muted-foreground"
+                  !isCompleted && !isCurrent && "bg-secondary text-secondary-foreground"
                 )}
               >
                 {isCompleted ? (
                   <Check className="w-4 h-4" aria-hidden="true" />
-                ) : !isAccessible ? (
-                  <Lock className="w-3 h-3" aria-hidden="true" />
                 ) : (
                   lesson.id
                 )}
